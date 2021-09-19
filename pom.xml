@@ -23,6 +23,7 @@
         <module>review-api</module>
         <module>movie-api</module>
         <module>customer-api</module>
+        <module>client</module>
     </modules>
     <dependencies>
         <dependency>
