@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.costa.luiz</groupId>
-    <artifactId>spring-reactive</artifactId>
+    <artifactId>progamacao-reativa-em-java-com-spring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-reactive</name>
+    <name>progamacao-reativa-em-java-com-spring</name>
     <packaging>pom</packaging>
     <description>Programação reativa com Spring H2 MongoDB</description>
     <properties>

@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.costa.luiz</groupId>
-        <artifactId>spring-reactive</artifactId>
+        <artifactId>progamacao-reativa-em-java-com-spring</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
