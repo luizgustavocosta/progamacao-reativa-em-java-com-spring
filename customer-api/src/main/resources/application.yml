@@ -11,6 +11,8 @@ spring:
   h2:
     console:
       enabled: true
+  main:
+    banner-mode: off
 springdoc:
   swagger-ui:
     enabled: true
