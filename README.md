@@ -3,12 +3,16 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=luizgustavocosta_progamacao-reativa-em-java-com-spring&metric=alert_status)](https://sonarcloud.io/dashboard?id=luizgustavocosta_progamacao-reativa-em-java-com-spring)
 
-
 # progamacao-reativa-em-java-com-spring
 Programação reativa com Spring H2 MongoDB
 
+## Diagrama de instalação
+<kbd>
+    <img src="https://raw.githubusercontent.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/main/static/App.png">
+</kbd>
 
 ### Swagger
+http://localhost:8080/swagger-ui.html
 http://localhost:8081/swagger-ui.html
 http://localhost:8083/swagger-ui.html
 

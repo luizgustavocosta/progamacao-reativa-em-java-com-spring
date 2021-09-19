@@ -13,7 +13,3 @@ spring:
       enabled: true
   main:
     banner-mode: off
-#springdoc:
-#  swagger-ui:
-#    enabled: true
-#  packages-to-scan: com.costa.luiz
