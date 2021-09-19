@@ -11,10 +11,15 @@
     </parent>
 
     <artifactId>movie-api</artifactId>
+
+    <properties>
+        <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring-${project.groupId}:${project.artifactId}</sonar.projectKey>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
+            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
         </dependency>
     </dependencies>
 

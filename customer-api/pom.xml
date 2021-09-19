@@ -14,7 +14,7 @@
 
     <properties>
         <h2-version>1.4.200</h2-version>
-        <swagger.api-version>1.5.10</swagger.api-version>
+        <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring-${project.groupId}:${project.artifactId}</sonar.projectKey>
     </properties>
 
     <dependencies>
@@ -35,11 +35,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>${swagger.api-version}</version>
         </dependency>
     </dependencies>
 

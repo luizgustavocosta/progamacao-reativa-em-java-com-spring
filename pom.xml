@@ -18,6 +18,10 @@
         <java.version>11</java.version>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
         <lombok.version>1.18.20</lombok.version>
+        <swagger.api-version>1.5.10</swagger.api-version>
+        <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring</sonar.projectKey>
+        <sonar.organization>luizgustavocosta</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <modules>
         <module>review-api</module>
@@ -27,9 +31,18 @@
     </modules>
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-webflux-ui</artifactId>
+            <version>${swagger.api-version}</version>
         </dependency>
     </dependencies>
     <build>

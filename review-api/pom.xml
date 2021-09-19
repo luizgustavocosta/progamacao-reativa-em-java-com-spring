@@ -12,6 +12,10 @@
 
     <artifactId>review-api</artifactId>
 
+    <properties>
+        <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring-${project.groupId}:${project.artifactId}</sonar.projectKey>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

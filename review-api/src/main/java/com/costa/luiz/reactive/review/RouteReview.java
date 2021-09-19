@@ -10,10 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Component
-@RequiredArgsConstructor
 public class RouteReview {
-
-    private final ReviewRepository repository;
 
     @Bean
     RouterFunction<ServerResponse> routesGateway(ReviewRepository repository) {

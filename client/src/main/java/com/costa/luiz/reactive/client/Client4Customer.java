@@ -46,7 +46,7 @@ public class Client4Customer {
                 .retrieve()
                 .bodyToFlux(CustomerClient.class))
                 .retry(2)
-                .timeout(Duration.ofMillis(200_000))
+                .timeout(Duration.ofSeconds(10))
                 .delayElements(Duration.ofSeconds(2))
                 .doOnNext(row -> {
                     count.incrementAndGet();
