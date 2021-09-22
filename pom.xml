@@ -19,6 +19,8 @@
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
         <lombok.version>1.18.20</lombok.version>
         <swagger.api-version>1.5.10</swagger.api-version>
+        <maven-failsafe.version>3.0.0-M5</maven-failsafe.version>
+        <jacoco.version>0.8.3</jacoco.version>
         <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring</sonar.projectKey>
         <sonar.organization>luizgustavocosta</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -70,6 +72,80 @@
                     <execution>
                         <goals>
                             <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <skip>false</skip>
+                    <destFile>${basedir}/target/coverage-reports/jacoco.exec</destFile>
+                    <dataFile>${basedir}/target/coverage-reports/jacoco.exec</dataFile>
+                    <output>file</output>
+                    <append>true</append>
+                    <excludes>
+                        <exclude>*MethodAccess</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <phase>test-compile</phase>
+                    </execution>
+                    <execution>
+                        <id>jacoco-site</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>pre-integration-test</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <append>false</append>
+                            <destFile>${project.basedir}/jacoco/jacoco-it.exec</destFile>
+                            <output>file</output>
+                            <propertyName>failsafeArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>post-integration-test</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.basedir}/jacoco/jacoco-it.exec</dataFile>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe.version}</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <testSourceDirectory>src/it/java</testSourceDirectory>
+                            <excludes>
+                                <exclude>**/*Test.java</exclude>
+                            </excludes>
+                        </configuration>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
