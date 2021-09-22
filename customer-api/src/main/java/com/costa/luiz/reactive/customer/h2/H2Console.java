@@ -5,7 +5,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import static org.h2.tools.Server.*;
+import static org.h2.tools.Server.createTcpServer;
+import static org.h2.tools.Server.createWebServer;
 
 @Component
 public class H2Console {

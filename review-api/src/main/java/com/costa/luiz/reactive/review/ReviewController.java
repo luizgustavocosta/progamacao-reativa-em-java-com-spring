@@ -24,13 +24,13 @@ class ReviewController {
 
     @GetMapping(path = "/reviews/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Review> findAllStream() {
-        return repository.findReviewsBy();
+        return repository.findReviewsBy().log();
     }
 
     @GetMapping(path = "/reviews/search", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Review> findByName(@RequestParam("name") String name) {
         log.info("Let's try find by name {}", name);
-        return Flux.from(repository.findReviewByName(name));
+        return Flux.from(repository.findReviewByName(name)).log();
     }
 }
 
