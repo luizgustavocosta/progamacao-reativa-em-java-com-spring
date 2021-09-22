@@ -23,11 +23,13 @@ public class DataInitializer {
     @EventListener(ApplicationReadyEvent.class)
     public void ready() {
 
+        var lastName = "Stahelski";
+        var middleName = "Chad";
         List<Customer> listOfMovies = List.of(
-                new Customer(null, "John", "Chad", "Stahelski", LocalDate.of(2020, Month.JANUARY, 2)),
-                new Customer(null, "Juan", "Chad", "Stahelski", LocalDate.of(2020, Month.MARCH, 20)),
-                new Customer(null, "Joan", "Chad", "Stahelski", LocalDate.of(2020, Month.APRIL, 19)),
-                new Customer(null, "Joao", "Chad", "Stahelski", LocalDate.of(2021, Month.JULY, 10)));
+                new Customer(null, "John", middleName, lastName, LocalDate.of(2020, Month.JANUARY, 2)),
+                new Customer(null, "Juan", middleName, lastName, LocalDate.of(2020, Month.MARCH, 20)),
+                new Customer(null, "Joan", middleName, lastName, LocalDate.of(2020, Month.APRIL, 19)),
+                new Customer(null, "Joao", middleName, lastName, LocalDate.of(2021, Month.JULY, 10)));
 
         Flux<Customer> movies = Flux.fromIterable(listOfMovies).flatMap(repository::save);
         movies.subscribe(movie -> log.info("movie ->" + movie)); // For in-memory database
