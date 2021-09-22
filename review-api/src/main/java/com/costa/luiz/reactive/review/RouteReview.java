@@ -1,5 +1,6 @@
 package com.costa.luiz.reactive.review;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

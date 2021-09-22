@@ -1,5 +1,6 @@
 package com.costa.luiz.reactive.review;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -11,7 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 
 @ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = ReviewController.class)
@@ -58,8 +59,9 @@ class ReviewControllerTest {
                 .expectStatus().isOk()
                 .expectBody()
                 .consumeWith(entityExchangeResult ->
-                        Arrays.toString(entityExchangeResult.getResponseBody())
-                                .equals("data:{\"id\":\"10\",\"listing_Url\":null,\"name\":\"Amazing\",\"summary\":null}"));
+                        Assertions.assertTrue(
+                                new String(entityExchangeResult.getResponseBody(), StandardCharsets.UTF_8)
+                                        .contains("data:{\"id\":\"10\",\"listing_Url\":null,\"name\":\"Amazing\",\"summary\":null}")));
     }
 
     Review review42() {
