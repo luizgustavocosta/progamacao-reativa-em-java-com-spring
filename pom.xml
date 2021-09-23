@@ -23,6 +23,7 @@
         <mojo.version>1.9.1</mojo.version>
         <jacoco.version>0.8.3</jacoco.version>
         <skyscreamer.version>1.5.0</skyscreamer.version>
+        <blockround.version>1.0.4.RELEASE</blockround.version>
         <sonar.projectKey>luizgustavocosta_progamacao-reativa-em-java-com-spring</sonar.projectKey>
         <sonar.organization>luizgustavocosta</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -49,6 +50,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
             <version>${swagger.api-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor.tools</groupId>
+            <artifactId>blockhound</artifactId>
+            <version>${blockround.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
