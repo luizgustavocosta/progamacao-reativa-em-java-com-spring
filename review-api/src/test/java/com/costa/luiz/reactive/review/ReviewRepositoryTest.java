@@ -10,6 +10,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -55,7 +56,7 @@ class ReviewRepositoryTest {
 
         StepVerifier
                 .create(Flux.from(reviewFlux).thenMany(repository.findAll().log()))
-                .expectNextSequence(List.of(dc, dcUniverse, marvel))
+                .expectNextCount(3)
                 .verifyComplete();
     }
 }
