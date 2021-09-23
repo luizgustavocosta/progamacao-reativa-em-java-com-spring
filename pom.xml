@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.costa.luiz</groupId>
     <artifactId>progamacao-reativa-em-java-com-spring</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>progamacao-reativa-em-java-com-spring</name>
     <packaging>pom</packaging>
     <description>Programação reativa com Spring H2 MongoDB</description>
