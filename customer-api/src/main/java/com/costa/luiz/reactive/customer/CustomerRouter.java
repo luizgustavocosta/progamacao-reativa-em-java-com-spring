@@ -1,7 +1,6 @@
 package com.costa.luiz.reactive.customer;
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
-import lombok.RequiredArgsConstructor;
 import org.springdoc.webflux.core.fn.SpringdocRouteBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -20,13 +19,10 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RequestPredicates.contentType;
 
 @Component
-@RequiredArgsConstructor
 public class CustomerRouter {
 
-    private final CustomerRepository repository;
-
     @Bean
-    RouterFunction<ServerResponse> customerRoutes() {
+    RouterFunction<ServerResponse> customerRoutes(CustomerRepository repository) {
         var tagValue = "Customers";
         var api = "customers";
         return SpringdocRouteBuilder.route().GET(api,

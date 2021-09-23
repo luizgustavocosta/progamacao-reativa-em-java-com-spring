@@ -1,6 +1,7 @@
 package com.costa.luiz.reactive.customer;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(value = "customers")
+@Builder
 public class Customer {
 
     @Id
