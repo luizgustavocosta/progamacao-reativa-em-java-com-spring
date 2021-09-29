@@ -1,3 +1,15 @@
+## Project
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+## Social
+![YouTube](https://img.shields.io/youtube/channel/views/UCPOdfYoz_hTNrngfouB24jQ)
+![Tweeter](https://img.shields.io/twitter/follow/luizcostatech?style=social)
+
 ## Build status
 ![Build status](https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/workflows/Java%20CI%20with%20Maven/badge.svg)
 
@@ -57,3 +69,17 @@ db.movies.insertOne({"id":"61450f16538a1ad9f23c84AD","name":"Reactive John Wick?
 
 ### Referências
 * [Markdown table generator](https://www.tablesgenerator.com/markdown_tables)
+* [Shields](https://shields.io)
+
+[contributors-shield]: https://img.shields.io/github/contributors/luizgustavocosta/progamacao-reativa-em-java-com-spring.svg?style=plastic
+[contributors-url]: https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/luizgustavocosta/progamacao-reativa-em-java-com-spring.svg?style=plastic
+[forks-url]: https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/network/members
+[stars-shield]: https://img.shields.io/github/stars/luizgustavocosta/progamacao-reativa-em-java-com-spring.svg?style=plastic
+[stars-url]: https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/stargazers
+[issues-shield]: https://img.shields.io/github/issues/luizgustavocosta/progamacao-reativa-em-java-com-spring.svg?style=plastic
+[issues-url]: https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/issues
+[license-shield]: https://img.shields.io/github/license/luizgustavocosta/progamacao-reativa-em-java-com-spring.svg?style=plastic
+[license-url]: https://github.com/luizgustavocosta/progamacao-reativa-em-java-com-spring/blob/master/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=plastic&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/luiz-gustavo-oliveira-costa-8989776/
