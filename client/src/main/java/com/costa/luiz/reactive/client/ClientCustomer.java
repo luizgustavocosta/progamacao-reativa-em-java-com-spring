@@ -1,7 +1,5 @@
 package com.costa.luiz.reactive.client;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,6 @@ import reactor.core.publisher.Flux;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @AllArgsConstructor
@@ -33,9 +29,7 @@ public class ClientCustomer {
                 .retry(2)
                 .timeout(Duration.ofSeconds(5))
                 .delayElements(Duration.ofSeconds(2))
-                .doOnNext(row -> {
-                    count.incrementAndGet();
-                })
+                .doOnNext(row -> count.incrementAndGet())
                 .doOnComplete(() -> log.info("Received {} rows", count.get()))
                 .doOnError(throwable -> {
                     log.error("******* Error to retrieve the customers *******");

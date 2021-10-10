@@ -35,6 +35,7 @@
         <module>movie-api</module>
         <module>customer-api</module>
         <module>client</module>
+        <module>netflix-api</module>
     </modules>
     <dependencies>
         <dependency>
