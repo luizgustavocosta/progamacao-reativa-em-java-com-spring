@@ -36,6 +36,7 @@
         <module>customer-api</module>
         <module>client</module>
         <module>netflix-api</module>
+        <module>hibernate-reactive</module>
     </modules>
     <dependencies>
         <dependency>
