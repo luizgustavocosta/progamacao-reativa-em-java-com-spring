@@ -6,28 +6,23 @@
     <persistence-unit name="postgresql-example">
         <provider>org.hibernate.reactive.provider.ReactivePersistenceProvider</provider>
 
-        <class>org.hibernate.reactive.example.session.Author</class>
-        <class>org.hibernate.reactive.example.session.Book</class>
+        <class>org.hibernate.reactive.example.Author</class>
+        <class>org.hibernate.reactive.example.Book</class>
 
         <properties>
 
             <!-- PostgreSQL -->
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:postgresql://localhost/hreact"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/hreact"/>
 
             <!-- Credentials -->
-            <property name="javax.persistence.jdbc.user"
-                      value="16bits_user"/>
-            <property name="javax.persistence.jdbc.password"
-                      value="16bits_pass"/>
+            <property name="javax.persistence.jdbc.user" value="16bits_user"/>
+            <property name="javax.persistence.jdbc.password" value="16bits_pass"/>
 
             <!-- The Vert.x SQL Client connection pool size -->
-            <property name="hibernate.connection.pool_size"
-                      value="10"/>
+            <property name="hibernate.connection.pool_size" value="2"/>
 
             <!-- Automatic schema export -->
-            <property name="javax.persistence.schema-generation.database.action"
-                      value="drop-and-create"/>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 
             <!-- SQL statement logging -->
             <property name="hibernate.show_sql" value="true"/>

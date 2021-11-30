@@ -1,4 +1,4 @@
-package org.hibernate.reactive.example.session;
+package org.hibernate.reactive.example;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
