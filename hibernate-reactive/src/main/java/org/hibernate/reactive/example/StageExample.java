@@ -15,6 +15,11 @@ import static org.hibernate.reactive.stage.Stage.SessionFactory;
  * API.
  *
  * Here we use stateless sessions and handwritten SQL.
+ * CompletionStage and CompletableFuture are classes provided by Java to represent asynchronous actions.
+ * CompletionStage are eager.
+ * When a method returns a CompletionStage, the operation has already been triggered.
+ * The outcome is used to complete the returned CompletionStage.
+ * On the other side, Unis are lazy. The operation is only triggered once there is a subscription.
  */
 public class StageExample {
 

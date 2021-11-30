@@ -1,6 +1,10 @@
 package org.hibernate.reactive.example;
 
+import io.smallrye.mutiny.groups.UniAwaitOptional;
+
+import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 
 import static java.lang.System.out;
 import static java.time.Month.*;
@@ -10,21 +14,22 @@ import static org.hibernate.reactive.mutiny.Mutiny.SessionFactory;
 /**
  * Demonstrates the use of Hibernate Reactive with the
  * {@link io.smallrye.mutiny.Uni Mutiny}-based API.
- *
+ * <p>
  * Here we use stateless sessions and handwritten SQL.
+ * Unis are lazy. The operation is only triggered once there is a subscription.
  */
 public class MutinyExample {
 
     // The first argument can be used to select a persistenceUnit.
     // Check resources/META-INF/persistence.xml for available names.
-    public static void main(String[] args)  {
-        out.println( "== Mutiny API Example ==" );
+    public static void main(String[] args) {
+        out.println("== Mutiny API Example ==");
 
         // obtain a factory for reactive sessions based on the
         // standard JPA configuration properties specified in
         // resources/META-INF/persistence.xml
         SessionFactory factory =
-                createEntityManagerFactory( persistenceUnitName( args ) )
+                createEntityManagerFactory(persistenceUnitName(args))
                         .unwrap(SessionFactory.class);
 
         // define some test data
@@ -40,39 +45,44 @@ public class MutinyExample {
         try {
             // obtain a reactive session
             factory.withStatelessSession(
-                            // persist the Authors with their Books in a transaction
-                            session -> session.withTransaction(
-                                    tx -> session.insertAll( author1, author2, book1, book2, book3 )
-                            )
+                    // persist the Authors with their Books in a transaction
+                    session -> session.withTransaction(
+                            tx -> session.insertAll(author1, author2, book1, book2, book3)
                     )
-                    // wait for it to finish
-                    .await().indefinitely();
+            )
+            // wait for it to finish
+            .await().indefinitely();
 
             factory.withStatelessSession(
                             // retrieve a Book
-                            session -> session.get( Book.class, book1.getId() )
+                            session -> session.get(Book.class, book1.getId())
                                     // print its title
-                                    .invoke( book -> out.println( book.getTitle() + " is a great book!" ) )
+                                    .invoke(book -> out.println(book.getTitle() + " is a great book! But won't be printed"))
                     )
-                    .await().indefinitely();
+                    .await().atMost(Duration.ofSeconds(5));
 
-            factory.withSession(
+            UniAwaitOptional<List<Author>> listUniAwaitOptional = factory.withSession(
                             // retrieve both Authors at once
-                            session -> session.find( Author.class, author1.getId(), author2.getId() )
-                                    .invoke( authors -> authors.forEach( author -> out.println( author.getName() ) ) )
+                            session -> session.find(Author.class, author1.getId(), author2.getId())
+                                    .invoke(authors -> authors.forEach(author -> out.println(author.getName())))
                     )
-                    .await().indefinitely();
+                    .await().asOptional();
+
+            listUniAwaitOptional.atMost(Duration.ofSeconds(5))
+                    .stream()
+                    .flatMap(List::stream)
+                    .forEach(author -> out.println("Bring by optional the author name ["+author.getName()+"]"));
 
             factory.withStatelessSession(
                             // retrieve an Author
-                            session -> session.get( Author.class, author2.getId() )
+                            session -> session.get(Author.class, author2.getId())
                                     // lazily fetch their books
-                                    .chain( author -> session.fetch( author.getBooks() )
+                                    .chain(author -> session.fetch(author.getBooks())
                                             // print some info
-                                            .invoke( books -> {
-                                                out.println( author.getName() + " wrote " + books.size() + " books" );
-                                                books.forEach( book -> out.println( book.getTitle() ) );
-                                            } )
+                                            .invoke(books -> {
+                                                out.println(author.getName() + " wrote " + books.size() + " books");
+                                                books.forEach(book -> out.println(book.getTitle()));
+                                            })
                                     )
                     )
                     .await().indefinitely();
@@ -84,9 +94,9 @@ public class MutinyExample {
                                             Object[].class
                                     )
                                     .getResultList()
-                                    .invoke( rows -> rows.forEach(
-                                            row -> out.printf( "%s (%s)%n", row[0], row[1] )
-                                    ) )
+                                    .invoke(rows -> rows.forEach(
+                                            row -> out.printf("%s (%s)%n", row[0], row[1])
+                                    ))
                     )
                     .await().indefinitely();
 
@@ -97,20 +107,20 @@ public class MutinyExample {
                                             Book.class
                                     )
                                     .getResultList()
-                                    .invoke( books -> books.forEach(
-                                            b -> out.printf(
+                                    .invoke(books -> books.forEach(
+                                            book -> out.printf(
                                                     "%s: %s%n",
-                                                    b.getIsbn(),
-                                                    b.getTitle()
+                                                    book.getIsbn(),
+                                                    book.getTitle()
                                             )
-                                    ) )
+                                    ))
                     )
                     .await().indefinitely();
 
             factory.withStatelessSession(
                             session -> session.withTransaction(
                                     // delete a detached Book
-                                    tx -> session.delete( book2 )
+                                    tx -> session.delete(book2)
                             )
                     )
                     .await().indefinitely();
@@ -118,15 +128,17 @@ public class MutinyExample {
             factory.withStatelessSession(
                             session -> session.withTransaction(
                                     // delete all the Books
-                                    tx -> session.createNativeQuery( "delete from books" ).executeUpdate()
+                                    tx -> session.createNativeQuery("delete from books").executeUpdate()
                                             //delete all the Authors
-                                            .chain( () -> session.createNativeQuery( "delete from authors" ).executeUpdate() )
+                                            .chain(() -> session.createNativeQuery("delete from authors").executeUpdate())
                             )
                     )
                     .await().indefinitely();
 
-        }
-        finally {
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            out.println("Houston, we've a problem [" + exception.getMessage() + "]");
+        } finally {
             // remember to shut down the factory
             factory.close();
         }

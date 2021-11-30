@@ -1,6 +1,9 @@
 ## Project
 This project is based on [Hibernate reactive](https://github.com/hibernate/hibernate-reactive)
 
+### Why?
+To show and review how hibernate implements reactive programming.
+
 ### Assumptions
 1. PostgreSQL instance
 
@@ -53,3 +56,6 @@ brew services stop postgres
 4. [Hibernate API](https://hibernate.org/reactive/documentation/1.0/reference/html_single/)
 5. [Smallrye Completion Stages](https://smallrye.io/smallrye-mutiny/guides/completion-stages)
 6. [Mutiny Concepts & Philosophy](https://smallrye.io/smallrye-mutiny/pages/philosophy)
+7. [Stage or Mutiny](https://hibernate.org/reactive/documentation/1.0/reference/html_single/#_apis_for_chaining_reactive_operations)
+8. [You Don’t Need Hibernate With Spring WebFlux and R2DBC](https://dzone.com/articles/you-dont-need-hibernate-with-spring-webflux-and-r2)
+9. [R2DBC](https://r2dbc.io)
