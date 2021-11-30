@@ -16,7 +16,7 @@ import static org.hibernate.reactive.stage.Stage.SessionFactory;
  *
  * Here we use stateless sessions and handwritten SQL.
  */
-public class CompletionStageExample {
+public class StageExample {
 
     // The first argument can be used to select a persistence unit.
     // Check resources/META-INF/persistence.xml for available names.
