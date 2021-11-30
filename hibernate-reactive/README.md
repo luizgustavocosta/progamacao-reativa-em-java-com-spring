@@ -41,6 +41,11 @@ Run the MutinyExample program
 brew services stop postgres
 ```
 
+# Class diagram
+<kbd>
+    <img src="class_diagram.png">
+</kbd>
+
 ### References
 1. [Hibernate](https://hibernate.org/orm/tooling/)
 2. [MetamodelGenerator](https://docs.jboss.org/hibernate/orm/5.6/topical/html_single/metamodelgen/MetamodelGenerator.html)
