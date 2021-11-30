@@ -49,6 +49,13 @@ brew services stop postgres
     <img src="class_diagram.png">
 </kbd>
 
+# Tech stack
+- openjdk-11
+- maven 3.6.3
+- postgresql 13.4
+- hibernate-reactive 1.1.0.Final
+- tests (not available right now) :cry:
+
 ### References
 1. [Hibernate](https://hibernate.org/orm/tooling/)
 2. [MetamodelGenerator](https://docs.jboss.org/hibernate/orm/5.6/topical/html_single/metamodelgen/MetamodelGenerator.html)
